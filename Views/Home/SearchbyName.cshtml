@@ -1,0 +1,13 @@
+﻿@using Microsoft.Extensions.Configuration
+
+@inject IConfiguration configuration
+@{ 
+    var newname = configuration.GetSection("NewBookAlert");
+}
+@if(newname.GetValue<bool>("DisplayNewBookAlert"))
+{
+
+    <div class="alert alert-info" role="alert">
+        @(newname.GetValue<string>("BookName"))
+    </div>
+}

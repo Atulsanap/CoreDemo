@@ -1,0 +1,60 @@
+﻿@model IEnumerable<CoreDemo.Models.Book>
+
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#add").on("click", function () {
+            debugger
+            $("#loadmodelcontent").load("/Home/AddorEdit?id=0", function () {
+
+            });
+            $("#popup").html("show");
+
+        })
+    })
+
+
+</script>
+
+
+@*@await Component.InvokeAsync("Book")*@
+
+@*<vc:BookComponent></vc:BookComponent>*@
+
+
+<p>
+   <a asp-controller="Home" asp-action="AddorEdit"  asp-route-id="0" class="btn btn-success" id="add">Add New Book</a>
+</p>
+<div class="container">
+    <div class="row">
+
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4">
+                <img class="img-thumbnail" src="~/Images/bookimg.jpg" alt="Chania" height="200" width="200">
+                <br />
+                @Html.DisplayNameFor(model => model.Name):
+                @item.Name <br />
+                @Html.DisplayNameFor(model => model.Author):
+                @item.Author<br />
+                @Html.DisplayNameFor(model => model.price):
+                @item.price<br />
+                @Html.DisplayNameFor(model => model.Language):
+                @item.Language<br />
+
+                <a asp-action="AddorEdit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+
+            </div>
+        }
+    </div>
+</div>
+<div class="modal" role="dialog" id="popup">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content" id="loadmodelcontent">
+        </div>
+    </div>
+</div>
+

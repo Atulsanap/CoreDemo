@@ -1,0 +1,13 @@
+﻿<h1>this is from view Component.</h1>x
+
+@model IEnumerable<Book>
+
+<div class=" row">
+    @foreach(var book in Model)
+    {
+    <div class="col-md-4">
+        <partial name="thumbnail" model="book"/>
+    </div>
+        
+    }
+</div>

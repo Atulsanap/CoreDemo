@@ -1,0 +1,79 @@
+﻿@model CoreDemo.Models.bookschoolvm
+
+@{
+    ViewData["Title"] = "AddorEdit";
+}
+
+<h1>AddorEdit</h1>
+@*<span class="close" data-dismiss="modal" style="padding:10px;" aria-label="Close">&times;</span>*@
+<h4>Book</h4>
+<hr />
+<script>
+    $(document).ready(function () {
+         @if(ViewBag.message == "Success")
+          {
+
+          }
+
+    })
+
+
+</script>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddorEdit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="book.Name" class="control-label"></label>
+                <input asp-for="book.Name" class="form-control" />
+                <span asp-validation-for="book.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="book.Author" class="control-label"></label>
+                <input asp-for="book.Author" class="form-control" />
+                <span asp-validation-for="book.Author" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="book.price" class="control-label"></label>
+                <input asp-for="book.price" class="form-control" />
+                <span asp-validation-for="book.price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="book.Language" class="control-label"></label>
+                <input asp-for="book.Language" class="form-control" />
+                <span asp-validation-for="book.Language" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Select School: </label>
+                @Html.DropDownListFor(model => model.school, new SelectList(Model.school, "SchoolId", "SchoolName"), "--Select School--")
+
+            </div>
+            <div>
+
+
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Add" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<div class="custom-control custom-switch">
+    <input type="checkbox" class="custom-control-input" id="customSwitch2" checked>
+    <label class="custom-control-label" for="customSwitch2">Toggle this switch element</label>
+</div>
+
+<label for="customRange" class="form-label">Custom range</label>
+<input type="range" class="form-range" id="customRange">
+
+<div>
+    <a asp-action="ShowBooks">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
