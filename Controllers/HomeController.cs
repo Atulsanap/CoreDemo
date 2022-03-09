@@ -197,5 +197,10 @@ namespace CoreDemo.Controllers
         //        return pageText.ToString();
         //    }
 
+        [HttpGet]
+        public void cal()
+        {
+
+        }
      }
 }
